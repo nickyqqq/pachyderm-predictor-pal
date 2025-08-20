@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Elephant Predictor Design System - Warm, natural, wildlife-inspired */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background colors - warm, natural palette */
+    --background: 42 15% 97%;
+    --foreground: 28 25% 15%;
 
+    /* Elephant-inspired grays and earth tones */
+    --elephant-gray: 220 8% 55%;
+    --elephant-gray-light: 220 8% 75%;
+    --elephant-gray-dark: 220 10% 35%;
+    
+    /* Safari sunset colors */
+    --safari-orange: 25 95% 65%;
+    --safari-peach: 20 80% 80%;
+    --safari-brown: 28 35% 45%;
+    
+    /* Nature greens */
+    --savanna-green: 85 25% 55%;
+    --savanna-green-light: 85 25% 75%;
+    
+    /* Gradients for beautiful backgrounds */
+    --gradient-safari: linear-gradient(135deg, hsl(var(--safari-peach)), hsl(var(--safari-orange)));
+    --gradient-earth: linear-gradient(135deg, hsl(var(--background)), hsl(42 20% 92%));
+    --gradient-elephant: linear-gradient(135deg, hsl(var(--elephant-gray-light)), hsl(var(--elephant-gray)));
+    
+    /* Shadows for depth */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--elephant-gray) / 0.1);
+    --shadow-card: 0 8px 32px -4px hsl(var(--elephant-gray) / 0.15);
+    --shadow-floating: 0 12px 40px -8px hsl(var(--elephant-gray) / 0.2);
+
+    /* Core design tokens */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 28 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 28 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 28 35% 45%;
+    --primary-foreground: 42 15% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 42 20% 92%;
+    --secondary-foreground: 28 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 42 20% 92%;
+    --muted-foreground: 220 8% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 25 95% 65%;
+    --accent-foreground: 28 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 42 20% 88%;
+    --input: 42 20% 88%;
+    --ring: 25 95% 65%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +125,62 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-earth);
+    min-height: 100vh;
   }
+}
+
+@layer components {
+  /* Elephant-themed button variants */
+  .btn-safari {
+    @apply bg-gradient-to-r from-[hsl(var(--safari-peach))] to-[hsl(var(--safari-orange))] text-[hsl(var(--accent-foreground))] 
+           border-0 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] 
+           transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-elephant {
+    @apply bg-gradient-to-r from-[hsl(var(--elephant-gray-light))] to-[hsl(var(--elephant-gray))] 
+           text-white border-0 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)]
+           transition-all duration-300 hover:scale-105;
+  }
+
+  /* Beautiful card styles */
+  .card-floating {
+    @apply bg-card border-0 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-floating)]
+           transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .card-prediction {
+    @apply bg-gradient-to-br from-card to-[hsl(42_20%_96%)] border-0 
+           shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-floating)]
+           transition-all duration-300 hover:scale-[1.02];
+  }
+
+  /* Upload zone styling */
+  .upload-zone {
+    @apply border-2 border-dashed border-[hsl(var(--accent))] bg-gradient-to-br 
+           from-[hsl(var(--accent)_/_0.05)] to-[hsl(var(--accent)_/_0.1)]
+           hover:from-[hsl(var(--accent)_/_0.1)] hover:to-[hsl(var(--accent)_/_0.15)]
+           transition-all duration-300 hover:border-[hsl(var(--accent))] hover:scale-[1.01];
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-gentle-bounce {
+    animation: gentle-bounce 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }

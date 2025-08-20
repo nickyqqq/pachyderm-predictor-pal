@@ -24,6 +24,18 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'elephant-gray': {
+					DEFAULT: 'hsl(var(--elephant-gray))',
+					light: 'hsl(var(--elephant-gray-light))',
+					dark: 'hsl(var(--elephant-gray-dark))',
+				},
+				'safari-orange': 'hsl(var(--safari-orange))',
+				'safari-peach': 'hsl(var(--safari-peach))',
+				'safari-brown': 'hsl(var(--safari-brown))',
+				'savanna-green': {
+					DEFAULT: 'hsl(var(--savanna-green))',
+					light: 'hsl(var(--savanna-green-light))',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
